@@ -1,12 +1,12 @@
 /* This is the data we will be using, study it but don't change anything, yet. */
 
 let menuItems = [
-  'Students',
-  'Faculty',
+  "Students",
+  "Faculty",
   "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
+  "Tech Trends",
+  "Music",
+  "Log Out"
 ];
 
 /* 
@@ -33,3 +33,38 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+let menuContainer = document.createElement("div");
+let menu = document.createElement("ul");
+
+// the function to create a menu item taking the array (Step 1)
+function createMenu(arr) {
+  menuContainer.className = "menu";
+
+  //Iterating over the array creating the list item for each item and adding to the ul (Step 2)
+  arr.forEach(item => {
+    let tmpItem = document.createElement("li");
+    tmpItem.textContent = item;
+    menu.appendChild(tmpItem);
+  });
+  menuContainer.appendChild(menu);
+  //returning the menu component (step 5)
+  return menuContainer;
+}
+
+//selecting the menu button (Step 3)
+let menuButton = document.querySelector(".menu-button");
+//adding the menu that was created in the function to the menu button on the dom (step 6)
+menuButton.appendChild(createMenu(menuItems));
+
+//adding a click event listener to the menu button to toggle class on the created div (Step 4)
+menuButton.addEventListener("click", () => {
+  console.log("it has been clicked");
+  //not sure what it is supposed to do but it isnt doing it.
+  menu.classList.toggle("menu--open");
+  menuContainer.classList.toggle("menu--open");
+});
+
+
+console.log("menuButton is", menuButton);
+console.log("menu Container is", menuContainer);
+console.log("menu is", menu);
