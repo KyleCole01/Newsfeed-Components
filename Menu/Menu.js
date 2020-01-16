@@ -43,6 +43,7 @@ let menu = menuCreater(menuItems)
     });
 let header = document.querySelector('.header');
 header.append(menu);
+
  
 
   
