@@ -18,7 +18,36 @@ let menuItems = [
       {each menu item as a list item}
     </ul>
   </div>
+   */
+  function menuCreater(arr) {
+    const menu = document.createElement('div');
+    menu.className = "menu";
+    const list = document.createElement('ul')
+    menu.append(list);
 
+      arr.forEach(element => {
+        let listItem = document.createElement('li');
+        listItem.textContent = element;
+        list.append(listItem);
+      });
+      console.log(menu);
+      return menu;
+  }
+let menuButton = document.querySelector('.menu-button');
+let menu = menuCreater(menuItems)
+    menuButton.addEventListener('click', () =>{
+      menu.classList.toggle('menu--open');
+      // return menu;
+      console.log(menu);
+      return menu;
+    });
+let header = document.querySelector('.header');
+header.append(menu);
+ 
+
+  
+
+/* 
   The function takes an array as its only argument.
 
   Step 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array. 
@@ -33,38 +62,4 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
-let menuContainer = document.createElement("div");
-let menu = document.createElement("ul");
 
-// the function to create a menu item taking the array (Step 1)
-function createMenu(arr) {
-  menuContainer.className = "menu";
-
-  //Iterating over the array creating the list item for each item and adding to the ul (Step 2)
-  arr.forEach(item => {
-    let tmpItem = document.createElement("li");
-    tmpItem.textContent = item;
-    menu.appendChild(tmpItem);
-  });
-  menuContainer.appendChild(menu);
-  //returning the menu component (step 5)
-  return menuContainer;
-}
-
-//selecting the menu button (Step 3)
-let menuButton = document.querySelector(".menu-button");
-//adding the menu that was created in the function to the menu button on the dom (step 6)
-menuButton.appendChild(createMenu(menuItems));
-
-//adding a click event listener to the menu button to toggle class on the created div (Step 4)
-menuButton.addEventListener("click", () => {
-  console.log("it has been clicked");
-  //not sure what it is supposed to do but it isnt doing it.
-  menu.classList.toggle("menu--open");
-  menuContainer.classList.toggle("menu--open");
-});
-
-
-console.log("menuButton is", menuButton);
-console.log("menu Container is", menuContainer);
-console.log("menu is", menu);
